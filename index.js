@@ -113,16 +113,20 @@ function Car(model, milesPerGallon) {
   this.odometer = 0;
 }
 Car.prototype.fill = function (gallons) {
-  if (gallons > this.tank) {
-    this.tank + gallons++;
-  }
+  this.tank += gallons;
+};
+Car.prototype.drive = function (distance) {
+  this.odometer += distance;
+  // this.tank * this.milesPerGallon = distance;
 };
 
 const newCar = new Car("acura", 23);
 
-newCar.fill(20);
+newCar.fill(20); // 460 miles to drive
+newCar.drive(100);
 
 console.log(newCar.tank);
+console.log(newCar.odometer);
 
 /*
   TASK 3
@@ -132,7 +136,8 @@ console.log(newCar.tank);
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-  Person.call(this, name, age, favoriteToy);
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
 }
 
 Baby.prototype = Object.create(Person.prototype);
@@ -151,10 +156,10 @@ console.log(newBorn.play());
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. this points to the object 
-  2. 
-  3. 
-  4. 
+  1. this points to the object when called in a function 
+  2. this is to the left of a . 
+  3. this refers the window in global 
+  4. replaces hard coding argument 
 */
 
 ///////// END OF CHALLENGE /////////
